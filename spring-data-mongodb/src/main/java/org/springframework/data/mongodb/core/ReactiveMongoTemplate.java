@@ -1637,6 +1637,8 @@ public class ReactiveMongoTemplate implements ReactiveMongoOperations, Applicati
 			if (collectionOptions.getMaxDocuments() != null) {
 				result = result.maxDocuments(collectionOptions.getMaxDocuments());
 			}
+
+			collectionOptions.getCollation().map(Collation::toMongoCollation).ifPresent(result::collation);
 		}
 		return result;
 	}
