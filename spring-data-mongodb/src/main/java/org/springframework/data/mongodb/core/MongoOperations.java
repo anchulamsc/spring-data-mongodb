@@ -22,6 +22,7 @@ import java.util.Set;
 import org.bson.Document;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.mongodb.core.BulkOperations.BulkMode;
+import org.springframework.data.mongodb.core.FindOperationBuilder.FindOperation;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOptions;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
@@ -1094,4 +1095,14 @@ public interface MongoOperations {
 	 * @return
 	 */
 	MongoConverter getConverter();
+
+	/**
+	 * Entry point for constructing and executing queries for a given domain type.
+	 *
+	 * @param domainType must not be {@literal null}.
+	 * @param <S>
+	 * @return new instance of {@link FindExecutionBuilder}.
+	 * @since 2.0
+	 */
+	<T> FindOperation<T> query(Class<T> domainType);
 }
