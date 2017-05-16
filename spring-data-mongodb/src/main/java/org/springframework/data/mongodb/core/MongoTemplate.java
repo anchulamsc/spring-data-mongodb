@@ -68,6 +68,7 @@ import org.springframework.data.mapping.model.MappingException;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.BulkOperations.BulkMode;
 import org.springframework.data.mongodb.core.FindOperationBuilder.FindOperation;
+import org.springframework.data.mongodb.core.RemoveOperationBuilder.RemoveOperation;
 import org.springframework.data.mongodb.core.UpdateOperationBuilder.UpdateOperation;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperationContext;
@@ -2725,5 +2726,10 @@ public class MongoTemplate implements MongoOperations, ApplicationContextAware, 
 	@Override
 	public <T> UpdateOperation<T> update(Class<T> domainType) {
 		return new UpdateOperationSupport(this).update(domainType);
+	}
+
+	@Override
+	public <T> RemoveOperation<T> remove(Class<T> domainType) {
+		return new RemoveOperationSupport(this).remove(domainType);
 	}
 }

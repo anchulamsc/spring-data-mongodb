@@ -1141,7 +1141,7 @@ public class MongoTemplateTests {
 
 	@Test // DATADOC-166
 	public void removingNullIsANoOp() {
-		template.remove(null);
+		template.remove((Object) null);
 	}
 
 	@Test // DATADOC-240, DATADOC-212

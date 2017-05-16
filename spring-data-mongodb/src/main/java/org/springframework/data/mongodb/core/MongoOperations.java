@@ -23,6 +23,7 @@ import org.bson.Document;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.mongodb.core.BulkOperations.BulkMode;
 import org.springframework.data.mongodb.core.FindOperationBuilder.FindOperation;
+import org.springframework.data.mongodb.core.RemoveOperationBuilder.RemoveOperation;
 import org.springframework.data.mongodb.core.UpdateOperationBuilder.UpdateOperation;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOptions;
@@ -1116,4 +1117,14 @@ public interface MongoOperations {
 	 * @since 2.0
 	 */
 	<T> UpdateOperation<T> update(Class<T> domainType);
+
+	/**
+	 * Entry point for constructing and executing deletes for a given domain type.
+	 *
+	 * @param domainType must not be {@literal null}.
+	 * @param <T>
+	 * @return new instance of {@link RemoveOperation}.
+	 * @since 2.0
+	 */
+	<T> RemoveOperation<T> remove(Class<T> removeOperation);
 }
