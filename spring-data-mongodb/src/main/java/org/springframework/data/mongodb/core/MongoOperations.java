@@ -23,6 +23,7 @@ import org.bson.Document;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.mongodb.core.BulkOperations.BulkMode;
 import org.springframework.data.mongodb.core.FindOperationBuilder.FindOperation;
+import org.springframework.data.mongodb.core.UpdateOperationBuilder.UpdateOperation;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOptions;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
@@ -1105,4 +1106,14 @@ public interface MongoOperations {
 	 * @since 2.0
 	 */
 	<T> FindOperation<T> query(Class<T> domainType);
+
+	/**
+	 * Entry point for constructing and executing updates for a given domain type.
+	 *
+	 * @param domainType must not be {@literal null}.
+	 * @param <T>
+	 * @return new instance of {@link UpdateOperationBuilder}.
+	 * @since 2.0
+	 */
+	<T> UpdateOperation<T> update(Class<T> domainType);
 }
